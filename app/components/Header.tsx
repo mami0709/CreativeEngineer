@@ -3,8 +3,6 @@ import Link from "next/link";
 import React, { ReactNode } from "react";
 import { getServerSession } from "next-auth";
 import { nextAuthOptions } from "../lib/next-auth/options";
-// import { PiCatLight } from "react-icons/pi";
-// import { FaCat } from "react-icons/fa6";
 
 type NavLinkProps = {
   href: string;
@@ -31,7 +29,6 @@ const Header = async () => {
           href={"/"}
           className="text-xl font-bold flex items-center text-black"
         >
-          {/* <FaCat className="w-8 h-8" /> */}
           <span className="ml-2 font-serif">創造エンジニア</span>
         </Link>
 
@@ -41,9 +38,9 @@ const Header = async () => {
               ホーム
             </span>
           </NavLink>
-          <NavLink href={"/login"}>
+          <NavLink href={user ? "/mypage" : "/login"}>
             <span className="transition-transform duration-300 group-hover:scale-110">
-              ログイン
+              {user ? "マイページ" : "ログイン"}
             </span>
           </NavLink>
           {user && (
@@ -55,7 +52,7 @@ const Header = async () => {
           )}
           {user ? (
             <Link
-              href={`/profile`}
+              href={`/mypage`}
               className="rounded-full overflow-hidden border border-gray-300"
             >
               <Image
