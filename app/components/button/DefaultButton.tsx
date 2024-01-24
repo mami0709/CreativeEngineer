@@ -17,7 +17,7 @@ type DefaultButtonProps = {
 export const DefaultButton: React.FC<DefaultButtonProps> = ({
   color = "white",
   outline,
-  backgroundColor = "yellow-500",
+  backgroundColor = "yellow-400",
   borderColor = "blue-500",
   text,
   fontSize = "text-base",

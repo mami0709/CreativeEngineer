@@ -4,8 +4,9 @@ import "./globals.css";
 import Header from "./components/Layout/Header";
 import { NextAuthProvider } from "./lib/next-auth/provider";
 import Footer from "./components/Layout/Footer";
+import SideBar from "./components/SideBar";
 
-const notoSansJP = Noto_Sans_JP({ weight: "400", subsets: ["latin"] });
+const notoSansJP = Noto_Sans_JP({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "創造エンジニア",
@@ -23,7 +24,10 @@ export default function RootLayout({
       <body className={`${notoSansJP.className} min-h-screen flex flex-col`}>
         <NextAuthProvider>
           <Header />
-          <div className="flex-grow">{children}</div>
+          <div className="flex">
+            <SideBar />
+            <div className="flex-grow">{children}</div>
+          </div>
           <Footer />
         </NextAuthProvider>
       </body>
