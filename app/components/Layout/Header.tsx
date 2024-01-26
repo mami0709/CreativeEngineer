@@ -39,7 +39,7 @@ const UserProfileOrLogin: React.FC<UserProfileOrLoginProps> = ({ user }) => {
         ) : (
           <IoLogInOutline className="text-2xl" />
         )}
-        <span>{user ? "ログアウト" : "ログイン"}</span>
+        <span className="text-xs">{user ? "ログアウト" : "ログイン"}</span>
       </div>
     </NavLink>
   );
@@ -62,12 +62,8 @@ const Header = async () => {
         </Link>
         <div className="flex items-center gap-1">
           <UserProfileOrLogin user={user} />
-          <Link href="/contact" className="mr-3">
-            <DefaultButton
-              text="お問い合わせ"
-              backgroundColor="yellow-500"
-              rounded={true}
-            />
+          <Link href="/contact" className="mr-3 hidden sm:block">
+            <DefaultButton text="お問い合わせ" rounded={true} />
           </Link>
           {user && (
             <Link
