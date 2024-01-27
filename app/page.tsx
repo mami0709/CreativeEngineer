@@ -1,6 +1,7 @@
 import React from "react";
 import { MainImage } from "./components/home/MainImage";
 import Banners from "./components/home/Banners";
+import { CardsContainer } from "./components/home/CardsContainer";
 
 export default function Home() {
   return (
@@ -26,6 +27,8 @@ export default function Home() {
       />
 
       <Banners />
+
+      <CardsContainer />
 
       <h1>メインコンテンツ</h1>
     </div>
