@@ -1,4 +1,4 @@
-type DummyDataType = {
+export type DummyDataType = {
   id: number;
   title: string;
   mainImage: string;
