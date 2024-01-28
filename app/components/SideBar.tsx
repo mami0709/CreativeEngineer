@@ -56,14 +56,14 @@ export default function SideBar() {
       <span className="px-4 py-2 font-bold text-slate-800">人気</span>
       <ul>
         <SidebarLink
-          href="/ranking"
+          href={`/category/0`}
           icon={FaCrown}
           selectedOption={selectedOption}
         >
           閲覧ランキング
         </SidebarLink>
         <SidebarLink
-          href="/column"
+          href={`/category/1`}
           icon={FaStar}
           selectedOption={selectedOption}
         >
@@ -75,36 +75,52 @@ export default function SideBar() {
       <span className="px-4 py-2 font-bold text-slate-800">勉強</span>
       <ul>
         <SidebarLink
-          href="/a"
+          href={`/category/2`}
           icon={TbLanguageHiragana}
           selectedOption={selectedOption}
         >
           言語別おすすめ記事
         </SidebarLink>
-        <SidebarLink href="/a" icon={FaRoad} selectedOption={selectedOption}>
+        <SidebarLink
+          href={`/category/3`}
+          icon={FaRoad}
+          selectedOption={selectedOption}
+        >
           必見ロードマップ
         </SidebarLink>
-        <SidebarLink href="/a" icon={FaSchool} selectedOption={selectedOption}>
+        <SidebarLink
+          href={`/category/4`}
+          icon={FaSchool}
+          selectedOption={selectedOption}
+        >
           スクールおすすめランキング
         </SidebarLink>
-        <SidebarLink href="/a" icon={FaBook} selectedOption={selectedOption}>
+        <SidebarLink
+          href={`/category/5`}
+          icon={FaBook}
+          selectedOption={selectedOption}
+        >
           おすすめ書籍
         </SidebarLink>
         <SidebarLink
-          href="/a"
+          href={`/category/6`}
           icon={FaHandPaper}
           selectedOption={selectedOption}
         >
           おすすめ質問サイト
         </SidebarLink>
         <SidebarLink
-          href="/a"
+          href={`/category/7`}
           icon={FaPencilAlt}
           selectedOption={selectedOption}
         >
           独学おすすめサイト
         </SidebarLink>
-        <SidebarLink href="/a" icon={FaYoutube} selectedOption={selectedOption}>
+        <SidebarLink
+          href={`/category/8`}
+          icon={FaYoutube}
+          selectedOption={selectedOption}
+        >
           おすすめYouTube
         </SidebarLink>
       </ul>
@@ -112,18 +128,22 @@ export default function SideBar() {
 
       <span className="px-4 py-2 font-bold text-slate-800">転職</span>
       <ul>
-        <SidebarLink href="/a" icon={MdWork} selectedOption={selectedOption}>
+        <SidebarLink
+          href={`/category/9`}
+          icon={MdWork}
+          selectedOption={selectedOption}
+        >
           求人サイト
         </SidebarLink>
         <SidebarLink
-          href="/a"
+          href={`/category/10`}
           icon={HiOfficeBuilding}
           selectedOption={selectedOption}
         >
           転職対策
         </SidebarLink>
         <SidebarLink
-          href="/a"
+          href={`/category/11`}
           icon={RiComputerLine}
           selectedOption={selectedOption}
         >

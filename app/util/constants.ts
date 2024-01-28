@@ -77,3 +77,18 @@ export const DummyData: DummyDataType[] = [
     updated_at: new Date().toString(),
   },
 ];
+
+export const CategoriesId: { [key: string]: string } = {
+  0: "閲覧ランキング",
+  1: "コラム",
+  2: "言語別おすすめ記事",
+  3: "必見ロードマップ",
+  4: "スクールおすすめランキング",
+  5: "おすすめ書籍",
+  6: "おすすめ質問サイト",
+  7: "独学おすすめサイト",
+  8: "おすすめYouTube",
+  9: "求人サイト",
+  10: "転職対策",
+  11: "ポートフォリオ",
+};
