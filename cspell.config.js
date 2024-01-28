@@ -1,3 +1,10 @@
 module.exports = {
-  words: ["swiper"],
+  words: [
+    "swiper",
+    "microcms",
+    "Loadmap",
+    "jobchenge",
+    "jobchange",
+    "eyecatch",
+  ],
 };

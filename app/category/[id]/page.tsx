@@ -1,30 +1,51 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { CategoriesId, DummyData, DummyDataType } from "../../util/constants";
+import React, { useEffect, useState, useCallback } from "react";
 import { Card } from "../../components/home/Card";
 import { useRouter, usePathname } from "next/navigation";
+import { ArticleType } from "@/app/types/ArticleType";
+import { getCategoryList } from "../../lib/microcms/client";
+import LoadingSpinner from "@/app/loading";
 
 function CategoryList() {
   const router = useRouter();
   const pathname = usePathname();
   const [categoryName, setCategoryName] = useState("");
-  // カテゴリーに一致する記事のリスト
-  const [categoryArticles, setCategoryArticles] = useState<DummyDataType[]>([]);
+  const [categoryArticles, setCategoryArticles] = useState<ArticleType[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const fetchCategoryArticles = useCallback(async (categoryId: string) => {
+    setIsLoading(true);
+    try {
+      const response = await getCategoryList(categoryId);
+      if (response.contents && response.contents.length > 0) {
+        const firstArticle = response.contents[0];
+        const categoryName = firstArticle.category.name;
+        setCategoryName(categoryName);
+        setCategoryArticles(response.contents);
+      } else {
+        setCategoryName("カテゴリーが見つかりません");
+        console.error("記事のデータが見つかりません");
+      }
+    } catch (error) {
+      console.error("記事の取得に失敗しました", error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
 
   useEffect(() => {
-    // pathnameからIDを抽出
-    const match = pathname.match(/\/category\/(\d+)/);
+    // URLからカテゴリーIDを抽出
+    const match = pathname.match(/\/category\/([a-zA-Z]+)/);
     if (match) {
-      const id = match[1]; // URLから抽出したID
-      const name = CategoriesId[id]; // IDに基づいてCategoriesIdからカテゴリー名を取得
-      setCategoryName(name || "カテゴリーが見つかりません");
-
-      // カテゴリー名に一致する記事をDummyDataから取得
-      const articles = DummyData.filter((article) => article.category === name);
-      setCategoryArticles(articles);
+      const categoryId = match[1];
+      fetchCategoryArticles(categoryId);
     }
-  }, [pathname]);
+  }, [pathname, fetchCategoryArticles]);
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <div className="m-10">

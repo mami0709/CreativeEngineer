@@ -7,10 +7,11 @@ import { useRouter } from "next/navigation";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { Card, CardProps } from "./Card";
+import { Card } from "./Card";
+import { ArticleType } from "@/app/types/ArticleType";
 
 type CardsContainerProps = {
-  cardsData: CardProps[];
+  cardsData: ArticleType[];
   moreButtonUrl: string;
   categoryName: string;
   categoryIcon: React.ReactNode;
@@ -80,12 +81,12 @@ export const CardsContainer: React.FC<CardsContainerProps> = ({
             <Card
               id={data.id}
               title={data.title}
-              mainImage={data.mainImage}
+              eyecatch={data.eyecatch}
               content={data.content}
               tags={data.tags}
               category={data.category}
-              updated_at={data.updated_at}
-              created_at={data.created_at}
+              updatedAt={data.updatedAt}
+              createdAt={data.createdAt}
             />
           </SwiperSlide>
         ))}

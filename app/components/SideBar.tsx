@@ -56,14 +56,14 @@ export default function SideBar() {
       <span className="px-4 py-2 font-bold text-slate-800">人気</span>
       <ul>
         <SidebarLink
-          href={`/category/0`}
+          href={`/category/ranking`}
           icon={FaCrown}
           selectedOption={selectedOption}
         >
           閲覧ランキング
         </SidebarLink>
         <SidebarLink
-          href={`/category/1`}
+          href={`/category/column`}
           icon={FaStar}
           selectedOption={selectedOption}
         >
@@ -75,49 +75,49 @@ export default function SideBar() {
       <span className="px-4 py-2 font-bold text-slate-800">勉強</span>
       <ul>
         <SidebarLink
-          href={`/category/2`}
+          href={`/category/language`}
           icon={TbLanguageHiragana}
           selectedOption={selectedOption}
         >
           言語別おすすめ記事
         </SidebarLink>
         <SidebarLink
-          href={`/category/3`}
+          href={`/category/loadmap`}
           icon={FaRoad}
           selectedOption={selectedOption}
         >
           必見ロードマップ
         </SidebarLink>
         <SidebarLink
-          href={`/category/4`}
+          href={`/category/school`}
           icon={FaSchool}
           selectedOption={selectedOption}
         >
           スクールおすすめランキング
         </SidebarLink>
         <SidebarLink
-          href={`/category/5`}
+          href={`/category/book`}
           icon={FaBook}
           selectedOption={selectedOption}
         >
           おすすめ書籍
         </SidebarLink>
         <SidebarLink
-          href={`/category/6`}
+          href={`/category/question`}
           icon={FaHandPaper}
           selectedOption={selectedOption}
         >
           おすすめ質問サイト
         </SidebarLink>
         <SidebarLink
-          href={`/category/7`}
+          href={`/category/study`}
           icon={FaPencilAlt}
           selectedOption={selectedOption}
         >
           独学おすすめサイト
         </SidebarLink>
         <SidebarLink
-          href={`/category/8`}
+          href={`/category/youtube`}
           icon={FaYoutube}
           selectedOption={selectedOption}
         >
@@ -129,21 +129,21 @@ export default function SideBar() {
       <span className="px-4 py-2 font-bold text-slate-800">転職</span>
       <ul>
         <SidebarLink
-          href={`/category/9`}
+          href={`/category/job`}
           icon={MdWork}
           selectedOption={selectedOption}
         >
           求人サイト
         </SidebarLink>
         <SidebarLink
-          href={`/category/10`}
+          href={`/category/jobchange`}
           icon={HiOfficeBuilding}
           selectedOption={selectedOption}
         >
           転職対策
         </SidebarLink>
         <SidebarLink
-          href={`/category/11`}
+          href={`/category/portfolio`}
           icon={RiComputerLine}
           selectedOption={selectedOption}
         >

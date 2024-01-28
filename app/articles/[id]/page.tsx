@@ -1,28 +1,44 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { DummyData, DummyDataType } from "../../util/constants";
+import React, { useEffect, useState, useCallback } from "react";
+import { usePathname } from "next/navigation";
+import { ArticleType } from "@/app/types/ArticleType";
+import { getDetailArticle } from "../../lib/microcms/client";
 import Image from "next/image";
-import { useRouter, usePathname } from "next/navigation";
+import LoadingSpinner from "@/app/loading";
 
 function ArticleDetail() {
-  const router = useRouter();
   const pathname = usePathname();
-  const [article, setArticle] = useState<DummyDataType | null>(null);
+  const [article, setArticle] = useState<ArticleType | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const fetchArticleDetail = useCallback(async (contentId: string) => {
+    setIsLoading(true);
+    try {
+      const detailArticle = await getDetailArticle(contentId);
+      setArticle(detailArticle);
+    } catch (error) {
+      console.error("記事の詳細の取得に失敗しました", error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
 
   useEffect(() => {
-    // pathnameからIDを抽出する（例: '/articles/6' から '6' を取得）
-    const match = pathname.match(/\/articles\/(\d+)/);
+    // URLからIDを抽出する
+    const match = pathname.match(/\/articles\/([a-zA-Z0-9-]+)/);
     if (match) {
-      const id = parseInt(match[1]);
-      const foundArticle = DummyData.find((article) => article.id === id);
-      setArticle(foundArticle || null);
+      const contentId = match[1];
+      fetchArticleDetail(contentId);
     }
-  }, [pathname]); // pathnameが変更されたときにeffectを実行
+  }, [pathname, fetchArticleDetail]);
 
-  // 記事が見つからない場合は、メッセージを表示
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
   if (!article) {
-    return <div>記事が見つかりません。</div>;
+    return <div className="m-10">記事が見つかりません。</div>;
   }
 
   return (
@@ -44,33 +60,29 @@ function ArticleDetail() {
         <div className="flex gap-4 items-center ml-auto">
           <div>
             <span>作成日:</span>
-            {new Date(article.created_at).toLocaleDateString()}
+            {new Date(article.createdAt).toLocaleDateString()}
           </div>
           <div>
             <span>更新日:</span>
-            {new Date(article.updated_at).toLocaleDateString()}
+            {new Date(article.updatedAt).toLocaleDateString()}
           </div>
         </div>
       </div>
-
       <div className="relative w-full h-96">
         <Image
-          src={article.mainImage}
+          src={article.eyecatch.url}
           alt={article.title}
           layout="fill"
           objectFit="cover"
         />
       </div>
-
       <div className="bg-amber-500 text-white font-bold inline-block px-3 py-1 my-6">
-        {article.category}
+        {article.category.name}
       </div>
-
       {/* TODO：目次機能つけたい */}
 
-      <div>
-        <p>{article.content}</p>
-      </div>
+      {/* TODO: HTMLのスタイリング調整 */}
+      <div dangerouslySetInnerHTML={{ __html: article.content }} />
     </div>
   );
 }

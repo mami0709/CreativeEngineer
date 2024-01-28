@@ -1,45 +1,36 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-
-export type CardProps = {
-  id: number;
-  title: string;
-  mainImage: string;
-  content: string;
-  tags: string[];
-  category: string;
-  updated_at: string;
-  created_at: string;
-};
+import { ArticleType } from "@/app/types/ArticleType";
 
 const truncateText = (text: string, maxLength: number): string => {
-  if (text.length <= maxLength) {
-    return text;
+  // HTMLタグを除去
+  const strippedString = text.replace(/<[^>]+>/g, "");
+  if (strippedString.length <= maxLength) {
+    return strippedString;
   }
-  return text.substring(0, maxLength) + "...";
+  return strippedString.substring(0, maxLength) + "...";
 };
 
-export const Card: React.FC<CardProps> = ({
+export const Card: React.FC<ArticleType> = ({
   id,
   title,
-  mainImage,
+  eyecatch,
   content,
   tags,
   category,
-  updated_at,
-  created_at,
+  updatedAt,
+  createdAt,
 }) => {
-  // 日付をフォーマットする関数
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleString("ja-JP", {
+    const date = new Date(dateString);
+    const formattedDate = date.toLocaleString("ja-JP", {
+      timeZone: "Asia/Tokyo",
       year: "numeric",
       month: "long",
       day: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-      second: "numeric",
     });
+    return formattedDate;
   };
 
   const isNew = (dateString: string) => {
@@ -56,15 +47,15 @@ export const Card: React.FC<CardProps> = ({
         <div className="relative h-48 rounded-t-lg overflow-hidden">
           <Image
             className="rounded-t-lg"
-            src={mainImage}
+            src={eyecatch.url}
             alt={title}
             layout="fill"
             objectFit="cover"
           />
           <div className="absolute top-3 left-3 bg-amber-500 text-white px-3 py-1 text-sm font-bold">
-            {category}
+            {category.name}
           </div>
-          {isNew(created_at) && (
+          {isNew(createdAt) && (
             <div className="absolute top-3 right-3 bg-red-500 text-white px-3 py-1 text-sm font-bold">
               New
             </div>
@@ -73,10 +64,10 @@ export const Card: React.FC<CardProps> = ({
 
         <div className="p-5 mb-6">
           <div className="mb-2">
-            {tags.map((tag, index) => (
+            {tags.slice(0, 3).map((tag, index) => (
               <span
                 key={index}
-                className="inline-block  rounded-full px-3 py-1 text-sm font-semibold border border-yellow-800 text-yellow-900 mr-2 mb-2"
+                className="inline-block rounded-full px-3 py-1 text-sm font-semibold border border-yellow-800 text-yellow-900 mr-2 mb-2"
               >
                 #{tag}
               </span>
@@ -92,12 +83,12 @@ export const Card: React.FC<CardProps> = ({
             className="font-normal text-gray-400 overflow-hidden"
             style={{ maxHeight: "5.5rem" }}
           >
-            {truncateText(content, 35)}
+            {truncateText(content, 45)}
           </p>
         </div>
 
         <div className="absolute bottom-3 right-3 text-sm text-gray-600">
-          {formatDate(updated_at)}
+          {formatDate(updatedAt)}
         </div>
       </div>
     </Link>
