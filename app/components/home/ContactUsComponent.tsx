@@ -11,7 +11,7 @@ const ContactUsComponent: React.FC = () => {
     router.push("/contact");
   };
   return (
-    <div className="max-w-7xl mx-auto p-10 bg-yellow-50 rounded-lg shadow-md flex mb-44">
+    <div className="w-10/12 mx-auto p-10 bg-yellow-50 rounded-lg shadow-md flex mb-44">
       <div>
         <div className="text-center mb-8">
           <h2 className="text-4xl font-bold text-gray-800">Contact Us</h2>
@@ -32,7 +32,7 @@ const ContactUsComponent: React.FC = () => {
         </div>
       </div>
 
-      <div className="relative h-200 w-full">
+      <div className="relative h-200 w-full hidden sm:block">
         <Image
           className="rounded-lg px-24"
           src="/contact_us.jpg"
