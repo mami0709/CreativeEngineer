@@ -62,7 +62,11 @@ const Header = async () => {
         </Link>
         <div className="flex items-center gap-1">
           <UserProfileOrLogin user={user} />
-          <Link href="/contact" className="mr-3 hidden sm:block">
+          <Link
+            href="https://forms.gle/sqA815LLnxxoidEd6"
+            target="_blank"
+            className="mr-3 hidden sm:block"
+          >
             <DefaultButton text="お問い合わせ" rounded={true} />
           </Link>
           {user && (

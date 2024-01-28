@@ -8,7 +8,7 @@ const ContactUsComponent: React.FC = () => {
   const router = useRouter();
 
   const handleContactClick = () => {
-    router.push("/contact");
+    router.push("https://forms.gle/sqA815LLnxxoidEd6");
   };
   return (
     <div className="w-10/12 mx-auto p-10 bg-yellow-50 rounded-lg shadow-md flex mb-44">
@@ -23,12 +23,14 @@ const ContactUsComponent: React.FC = () => {
         </div>
 
         <div className="flex justify-center gap-4 mb-8">
-          <button
-            onClick={handleContactClick}
+          <a
+            href="https://forms.gle/sqA815LLnxxoidEd6"
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-red-500 text-white font-bold py-2 px-8 rounded hover:bg-red-600 transition duration-300 ease-in-out"
           >
             問い合わせる →
-          </button>
+          </a>
         </div>
       </div>
 
