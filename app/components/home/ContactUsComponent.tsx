@@ -28,6 +28,7 @@ const ContactUsComponent: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="bg-red-500 text-white font-bold py-2 px-8 rounded hover:bg-red-600 transition duration-300 ease-in-out"
+            style={{ color: "white !important" }}
           >
             問い合わせる →
           </a>
