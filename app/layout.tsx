@@ -21,9 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body
-        className={`${notoSansJP.className} min-h-screen flex flex-col bg-gray-100`}
-      >
+      <body className={`${notoSansJP.className} flex flex-col bg-gray-100`}>
         <NextAuthProvider>
           <Header />
           <div className="flex">

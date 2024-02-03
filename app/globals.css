@@ -1,3 +1,69 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* 全ての見出しタグに適用される共通のスタイル */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+}
+
+/* 個々の見出しタグに対する特定のスタイル */
+h1 {
+  font-size: 2em;
+}
+h2 {
+  font-size: 1.5em;
+}
+h3 {
+  font-size: 1.17em;
+}
+h4 {
+  font-size: 1em;
+}
+h5 {
+  font-size: 0.83em;
+}
+h6 {
+  font-size: 0.67em;
+}
+
+p {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+p:first-child {
+  margin-top: 0; /* 最初の<p>タグの上部マージンを無しにする */
+}
+
+p:last-child {
+  margin-bottom: 0; /* 最後の<p>タグの下部マージンを無しにする */
+}
+
+/* リンクの基本スタイル */
+a {
+  color: #0645ad;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+/* リンクにマウスカーソルが乗った時のスタイル */
+a:hover {
+  color: #0b6abf;
+  text-decoration: underline;
+}
+
+/* リンクが訪問済みの時のスタイル */
+a:visited {
+  color: #4b2e83;
+}
+
+/* リンクがアクティブ（クリックされている間）の時のスタイル */
+a:active {
+  color: #c61b1b;
+}
