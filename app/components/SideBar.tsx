@@ -52,7 +52,7 @@ export default function SideBar() {
   }, [pathname]);
 
   return (
-    <div className="bg-white w-70 h-screen shadow-lg pt-5 hidden sm:block">
+    <div className="bg-white w-70 min-h-screen shadow-lg pt-5 hidden sm:block">
       <span className="px-4 py-2 font-bold text-slate-800">人気</span>
       <ul>
         <SidebarLink

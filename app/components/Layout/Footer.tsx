@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="bg-gradient-to-b from-indigo-700 to-purple-400 shadow-lg">
       <div
-        className="container flex flex-col pt-5 pb-5 text-center"
+        className="container mx-auto flex flex-col pt-5 pb-5 text-center"
         style={{ color: "white !important" }}
       >
         <Link
